@@ -1,0 +1,87 @@
+<html>
+ <head>
+ 
+<title>05211940000025 - Rifdah Daffa Salsabiila</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <link href='https://fonts.googleapis.com/css?family=Amatic SC' rel='stylesheet'>
+     <link href='https://fonts.googleapis.com/css?family=Calistoga' rel='stylesheet'>
+     <style>
+        .label {
+            float: left;
+            width: 120px;
+        }
+        
+        .infobox {
+            width: 200px;
+        }
+        
+        .error {
+            color: red;
+            padding-left: 10px;
+        }
+        
+        .submit {
+            margin-left: 125px;
+            margin-top: 10px;
+        }
+        .aku {
+            font-family: 'Amatic SC';
+            font-size: 20px;
+        }
+        .judul {
+            font-family: 'Calistoga';
+        }
+        
+    </style>
+ </head>
+
+ <body style="background-color: FCCBC0;"> 
+<div class="container">
+    <div class="jumbotron text-center jumbotron-fluid" style="background-image: url('https://i.pinimg.com/564x/42/0e/0a/420e0a1799d376bae5a955a90188480a.jpg');"> <!--jumbotron-->
+        <h2 class="judul">Lemme Know How Old are You?!</h2>
+        <p class="aku">Rifdah DS - 05211940000025</p>
+    </div>
+         <form id="signup" method="post" action="">
+             <div>
+    <br>
+    <span class="label">Enter Your Age</span>
+                 <input type="text" class="infobox form-control" name="age"/>
+                 <span class="error">Sorry, only numericals allowed</span>
+             </div>
+             <script>
+                 $(document).ready(function() { 
+                    $('.error').hide(); //class dengan mana error disembunyikan dahulu
+                    $('.submit').click(function(event){ //tombol submit di klik
+                        var data=$('.infobox').val(); // membaca isi text box dengan class name infobox
+                        var len=data.length; //membaca isi text box , dicari berapa panjang karakternyaa | dan disimpan di variabel len
+                        var c=0; //untuk inisiasi var " sebagai angka
+                        var age=0; //untuk inisiasi var age sebagai angka
+                        var flag=0; //untuk inisiasi var flag sebagai angka
+                        for(var i=0;i<len;i++) { //cek satu persatu karakter di text box
+                        c=data.charAt(i).charCodeAt(0); //membaca 1 karakter ke i
+                            if(c <48 || c >57) { //dalam unicode (angka 0-9 adalah pada kode ke 48-57)
+                                $('.error').show(); //perintah untuk menampilkan class error
+                                flag=1; 
+                                event.preventDefault(); //jika if statement diatas true, maka mencegah data tersubmit. yang berarti bahwa tindakan default yang dimiliki peristiwa tersebut tidak akan terjadi.
+                                break; //melompat keluar dari loop dan memutus loop dan terus mengeksekusi kode setelah loop, jika if statement diatas true
+                            } else { //untuk menentukan blok kode yang akan dieksekusi, jika kondisi yang sama salah
+                                $('.error').hide(); //menyembunyikan elemen yang dipilih, jika if statement diatas false
+                            }
+                        }
+                if(flag==0) {
+                    age=parseInt(data); //isi variabel data diubah menjadi int
+                if(age<5 || age>99) { //untuk menentukan blok kode yang akan dieksekusi, jika kondisi yang ditentukan (age<5 || age>99) benar
+                    $('.error').show(); //perintah untuk menampilkan class error
+                    $('.error').text('Invalid Age. Please enter the age within the range 5 to 99'); 
+                    event.preventDefault();
+                } }
+        }); });
+             </script>           
+        
+            <input class="submit btn btn-success" type="submit" value="Submit">
+         </form>
+     </div>
+</body>
+
+</html>
